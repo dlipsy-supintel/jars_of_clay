@@ -56,16 +56,33 @@ When iterating on the deployment guide:
 - Cost claims must cite sources (API pricing pages, hosting calculators)
 - Architecture must be achievable by a 2-3 person eng team
 
-## Build & Test
+## Build & Run
 ```bash
+# Type-check
+npm run typecheck
+
+# Run the enrichment pipeline (single lead, needs ANTHROPIC_API_KEY)
+npm run enrich
+
+# Start the API server
+npm run dev
+
 # Validate all dependencies and links
-bash scripts/validate-deps.sh
+npm run validate
 
 # Assemble guide from modular docs
-bash scripts/assemble-guide.sh
+npm run assemble
+```
 
-# Run example code validation
-node src/validators/check-examples.js
+## App Structure
+```
+/src/tools/find-email.ts      # Hunter.io email finder (real API)
+/src/tools/enrich-company.ts  # Hunter.io company enrichment (real API)
+/src/tools/store-lead.ts      # Lead storage (JSON file, RuVector-ready interface)
+/src/lib/pipeline.ts          # Claude API agentic loop wiring tools together
+/src/lib/retry.ts             # Exponential backoff for HTTP calls
+/src/api/server.ts            # Express API server
+/data/leads.json              # Stored leads (gitignored)
 ```
 
 ## Security Rules

@@ -1,0 +1,40 @@
+{
+  "name": "jars_of_clay",
+  "version": "1.0.0",
+  "description": "A startup-friendly blueprint for building a self-hosted GTM intelligence platform that replaces [Clay](https://clay.com) with **RuVector** + **Claude API** + direct data provider integrations.",
+  "main": "src/api/server.ts",
+  "scripts": {
+    "dev": "tsx src/api/server.ts",
+    "enrich": "tsx src/examples/enrichment-pipeline.ts",
+    "build": "tsc",
+    "start": "node dist/api/server.js",
+    "validate": "bash scripts/validate-deps.sh",
+    "assemble": "bash scripts/assemble-guide.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlipsy-supintel/jars_of_clay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/dlipsy-supintel/jars_of_clay/issues"
+  },
+  "homepage": "https://github.com/dlipsy-supintel/jars_of_clay#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.95.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}

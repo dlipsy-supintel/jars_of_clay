@@ -158,8 +158,7 @@ Provide a final summary of what you found.`,
     // Collect tool results for this turn
     if (response.stop_reason === "tool_use") {
       const toolUseBlocks = response.content.filter(
-        (block): block is Anthropic.ContentBlockParam & { type: "tool_use" } =>
-          block.type === "tool_use"
+        (block): block is Anthropic.ToolUseBlock => block.type === "tool_use"
       );
 
       const toolResults: Anthropic.ToolResultBlockParam[] = [];
