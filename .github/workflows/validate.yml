@@ -1,0 +1,22 @@
+name: Validate Dependencies
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+      - 'scripts/validate-deps.sh'
+  pull_request:
+    paths:
+      - 'docs/**'
+  schedule:
+    # Weekly check — catch repos that go stale
+    - cron: '0 9 * * 1'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate all dependencies
+        run: bash scripts/validate-deps.sh
